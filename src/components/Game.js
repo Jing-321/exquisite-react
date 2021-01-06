@@ -15,15 +15,19 @@ const Game = () => {
 
   const [poem, setPoem] = useState([]);
   const [player, setPlayer] = useState(1);
+  const [submitStatus, setSubmitStatus] = useState(false)
+  const [recentLine, setRecentLine] = useState('')
 
   const submitNewLine = (newLine) => {
     const updatedPoem = [...poem, newLine];
     setPoem(updatedPoem); //add the new line to the poem
     const newPlayer = player + 1;
     setPlayer(newPlayer); //switch to next player
+    setRecentLine(newLine);
   };
 
-  const resetGame = () => {
+  const finalizeGame = () => {
+    setSubmitStatus(true);
     setPoem([]);
     setPlayer(1);
   };
@@ -41,11 +45,11 @@ const Game = () => {
         { exampleFormat }
       </p>
 
-      <RecentSubmission />
+      <RecentSubmission recentSubmission={recentLine}/>
+      
+      {submitStatus ? <p></p> : <PlayerSubmissionForm sendSubmission={submitNewLine} index={player} fields={FIELDS} />}
 
-      <PlayerSubmissionForm sendSubmission={submitNewLine} index={player} fields={FIELDS} />
-
-      <FinalPoem isSubmitted={poem.length > 0 ? true : false} submissions={poem} revealPoem={resetGame} />
+      <FinalPoem isSubmitted={submitStatus} submissions={poem} revealPoem={finalizeGame} />
 
     </div>
   );

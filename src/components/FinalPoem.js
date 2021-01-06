@@ -4,8 +4,9 @@ import './FinalPoem.css';
 
 const FinalPoem = (props) => {
   const [poemPrintOut, setPoemPrintOut] = useState('');
+
   const revealFinalPoem = () => {
-    if (props.isSubmitted) {
+    if (!props.isSubmitted) {
       setPoemPrintOut(props.submissions.map(p => <p>{p}</p>));
       props.revealPoem()
     };

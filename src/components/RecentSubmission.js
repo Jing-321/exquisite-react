@@ -6,13 +6,13 @@ const RecentSubmission = (props) => {
   return (
     <div className="RecentSubmission">
       <h3>The Most Recent Submission</h3>
-      <p className="RecentSubmission__submission">{  }</p>
+      <p className="RecentSubmission__submission">{ props.recentSubmission }</p>
     </div>
   );
 }
 
 RecentSubmission.propTypes = {
-  submission: PropTypes.string.isRequired,
+  recentSubmission: PropTypes.string.isRequired,
 };
 
 export default RecentSubmission;
