@@ -3,6 +3,8 @@ import './App.css';
 import Game from './components/Game.js';
 
 const App = () => {
+
+  
   return (
     <div className="App">
       <header className="App__header">

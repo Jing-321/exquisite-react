@@ -13,6 +13,22 @@ const Game = () => {
     }
   }).join(' ');
 
+  const [poem, setPoem] = useState([]);
+  const [player, setPlayer] = useState(1);
+
+  const submitNewLine = (newLine) => {
+    const updatedPoem = [...poem, newLine];
+    setPoem(updatedPoem); //add the new line to the poem
+    const newPlayer = player + 1;
+    setPlayer(newPlayer); //switch to next player
+  };
+
+  const resetGame = () => {
+    setPoem([]);
+    setPlayer(1);
+  };
+
+
   return (
     <div className="Game">
       <h2>Game</h2>
@@ -27,9 +43,9 @@ const Game = () => {
 
       <RecentSubmission />
 
-      <PlayerSubmissionForm />
+      <PlayerSubmissionForm sendSubmission={submitNewLine} index={player} fields={FIELDS} />
 
-      <FinalPoem />
+      <FinalPoem isSubmitted={poem.length > 0 ? true : false} submissions={poem} revealPoem={resetGame} />
 
     </div>
   );
@@ -39,7 +55,7 @@ const Game = () => {
 const FIELDS = [
   'The',
   {
-    key: 'adj1',
+    key: 'adjective1',
     placeholder: 'adjective',
   },
   {
@@ -47,7 +63,7 @@ const FIELDS = [
     placeholder: 'noun',
   },
   {
-    key: 'adv',
+    key: 'adverb',
     placeholder: 'adverb',
   },
   {
@@ -56,7 +72,7 @@ const FIELDS = [
   },
   'the',
   {
-    key: 'adj2',
+    key: 'adjective2',
     placeholder: 'adjective',
   },
   {
