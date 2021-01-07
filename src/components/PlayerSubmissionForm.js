@@ -24,7 +24,7 @@ const PlayerSubmissionForm = (props) => {
   const onSubmitLine = (event) => {
     event.preventDefault();
 
-    if (formFields != formResetValue) {
+    if (!Object.values(formFields).includes('')) {
       props.sendSubmission(wordsToNewLine);
       setFormFields(formResetValue);
     };
