@@ -56,28 +56,32 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.adjective1}
             onChange={onTextChange}
             placeholder="adjective1"
-            type="text" />
+            type="text" 
+            className={formFields.adjective1 === '' ? 'PlayerSubmissionFormt__input--invalid': ''} />
 
           <input
             name='noun1'
             value={formFields.noun1}
             onChange={onTextChange}
             placeholder="noun1"
-            type="text" />
+            type="text" 
+            className={formFields.noun1 === '' ? 'PlayerSubmissionFormt__input--invalid': ''}/>
 
           <input
             name='adverb'
             value={formFields.adverb}
             onChange={onTextChange}
             placeholder="adverb"
-            type="text" />
+            type="text" 
+            className={formFields.adverb === '' ? 'PlayerSubmissionFormt__input--invalid': ''}/>
 
           <input
             name='verb'
             value={formFields.verb}
             onChange={onTextChange}
             placeholder="verb"
-            type="text" />
+            type="text" 
+            className={formFields.verb === '' ? 'PlayerSubmissionFormt__input--invalid': ''}/>
 
             <span>the</span>
 
@@ -86,14 +90,16 @@ const PlayerSubmissionForm = (props) => {
             value={formFields.adjective2}
             onChange={onTextChange}
             placeholder="adjective2"
-            type="text" />
+            type="text" 
+            className={formFields.adjective2 === '' ? 'PlayerSubmissionFormt__input--invalid': ''}/>
 
           <input
             name='noun2'
             value={formFields.noun2}
             onChange={onTextChange}
             placeholder="noun2"
-            type="text" />
+            type="text" 
+            className={formFields.noun2 === '' ? 'PlayerSubmissionFormt__input--invalid': ''}/>
 
           <span>.</span>
 
